@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>P A N I E K</title>
+
+    
+
+</head>
+<body>
+    <h1> FAVO ALBUMS OVERZICHT</h1>
+
+                 <div id="editpoging">
+
+                        <button v-on:click="isHidden = true">Hide the text below</button>
+                        <button v-on:click="isHidden = !isHidden">Toggle hide and show</button>
+                        
+                        <h4 v-if="!isHidden">Edit</h4>
+
+
+                </div>
+
+    <div id="test2">
+
+                <h3> Voeg een album toe:</h3>
+            
+                <form class="" method="post" @submit.prevent="newItem">
+                        <input type="text" placeholder="titel" v-model="items.title">
+                        <input type="text"  placeholder="artiest"v-model="items.artist">
+                        <input type="text"  placeholder="genre"v-model="items.genre">
+                        <button type="submit" name="button">toevoegen!</button>
+                </form>
+            
+        <br>  
+       
+        <table> 
+            <th> Naam </th>
+            <th> Artiest </th>
+            <th> Genre</th>
+            <th>details</th> 
+            <th> Edit</th>
+            <th> Delete</th>
+
+            <tr v-for="(item) in items"> 
+                
+                <td> {{ item.title }} </td>
+                <td> {{ item.artist }} </td>
+                <td> {{ item.genre }} </td>
+               
+                <td> 
+                    
+                        
+                    <button v-on:click="detailItem(item._id)"> details </button>
+
+                </td>
+
+                <td> <button  v-on:click="editItem(item._id, item.title, item.artist, item.genre)"> Edit </button></td>
+               
+
+                <td> <button v-on:click="deleteItem(item._id)"> Delete </button> </td>
+            </tr>  
+
+           
+
+
+        </table>
+
+    <br> 
+    
+       <h3>  </h3>
+
+       
+   
+    </div>
+
+    <script src="testvue.js"></script>
+</body>
+</html>
